@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Cookie from "./Cookie.jsx";
 import Message from "./Message.jsx";
+import EmailButton from "./EmailButton.jsx";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
@@ -16,7 +17,8 @@ class App extends React.Component {
     this.state = {
       message: null,
       showCookie: true,
-      showMessage: false
+      showMessage: false,
+      showEmailButton: false
     };
 
     this.updateCookie = this.updateCookie.bind(this);
@@ -35,19 +37,21 @@ class App extends React.Component {
   }
 
   updateCookie() {
-    const { showCookie, showMessage } = this.state;
+    const { showCookie, showMessage, showEmailButton } = this.state;
     this.setState({
       showCookie: !showCookie,
-      showMessage: !showMessage
+      showMessage: !showMessage,
+      showEmailButton: !showEmailButton
     });
   }
 
   render() {
-    const { message, showCookie, showMessage } = this.state;
+    const { message, showCookie, showMessage, showEmailButton } = this.state;
     return (
       <StyledDiv>
         <Cookie showCookie={showCookie} updateCookie={this.updateCookie} />
         <Message showMessage={showMessage} message={message} />
+        <EmailButton showEmailButton={showEmailButton} message={message} />
       </StyledDiv>
     );
   }

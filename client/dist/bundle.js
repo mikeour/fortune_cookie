@@ -30955,7 +30955,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  width: 50%;\n\n  :hover {\n    border: 1px solid red;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin: auto;\n  width: 50%;\n\n  :hover {\n    border: 1px solid red;\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -30965,7 +30965,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  display: inline-block;\n  animation: ", " 4s linear infinite;\n  padding: 2rem 1rem;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: relative;\n  animation: ", " 10s linear infinite;\n  padding: 2rem 1rem;\n  margin: auto;\n  width: 50%;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -30991,7 +30991,7 @@ var rotate = (0, _styledComponents.keyframes)(_templateObject());
 var Rotate = _styledComponents.default.div(_templateObject2(), rotate);
 
 var Image = _styledComponents.default.img(_templateObject3(), function (props) {
-  return props.displayProp ? "block" : "none";
+  return props.displayProp ? "relative" : "none";
 });
 
 var Cookie = function Cookie(props) {
@@ -31019,7 +31019,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", "\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 50px;\n  text-align: center;\n  border: 1px solid green;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", "\n  width: 500px;\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 50px;\n  text-align: center;\n  border: 1px solid green;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31042,7 +31042,56 @@ var Message = function Message(props) {
 
 var _default = Message;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/EmailButton.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  border: 1px solid magenta;\n  text-align: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledDiv = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.showEmailButton ? "relative" : "none";
+});
+
+var EmailButton = function EmailButton(props) {
+  var sendMail = function sendMail(msg) {
+    _axios.default.post("/email", {
+      data: msg
+    });
+  };
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(StyledDiv, {
+    onClick: function onClick() {
+      sendMail(props.message);
+    },
+    showEmailButton: props.showEmailButton
+  }, "EmailButton!"));
+};
+
+var _default = EmailButton;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31057,6 +31106,8 @@ var _axios = _interopRequireDefault(require("axios"));
 var _Cookie = _interopRequireDefault(require("./Cookie.jsx"));
 
 var _Message = _interopRequireDefault(require("./Message.jsx"));
+
+var _EmailButton = _interopRequireDefault(require("./EmailButton.jsx"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -31108,7 +31159,8 @@ function (_React$Component) {
     _this.state = {
       message: null,
       showCookie: true,
-      showMessage: false
+      showMessage: false,
+      showEmailButton: false
     };
     _this.updateCookie = _this.updateCookie.bind(_assertThisInitialized(_this));
     return _this;
@@ -31137,10 +31189,12 @@ function (_React$Component) {
     value: function updateCookie() {
       var _this$state = this.state,
           showCookie = _this$state.showCookie,
-          showMessage = _this$state.showMessage;
+          showMessage = _this$state.showMessage,
+          showEmailButton = _this$state.showEmailButton;
       this.setState({
         showCookie: !showCookie,
-        showMessage: !showMessage
+        showMessage: !showMessage,
+        showEmailButton: !showEmailButton
       });
     }
   }, {
@@ -31149,12 +31203,16 @@ function (_React$Component) {
       var _this$state2 = this.state,
           message = _this$state2.message,
           showCookie = _this$state2.showCookie,
-          showMessage = _this$state2.showMessage;
+          showMessage = _this$state2.showMessage,
+          showEmailButton = _this$state2.showEmailButton;
       return _react.default.createElement(StyledDiv, null, _react.default.createElement(_Cookie.default, {
         showCookie: showCookie,
         updateCookie: this.updateCookie
       }), _react.default.createElement(_Message.default, {
         showMessage: showMessage,
+        message: message
+      }), _react.default.createElement(_EmailButton.default, {
+        showEmailButton: showEmailButton,
         message: message
       }));
     }
@@ -31165,7 +31223,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","./EmailButton.jsx":"components/EmailButton.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

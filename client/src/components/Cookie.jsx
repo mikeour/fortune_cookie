@@ -12,15 +12,16 @@ const rotate = keyframes`
 `;
 
 const Rotate = styled.div`
-  display: inline-block;
-  animation: ${rotate} 4s linear infinite;
+  display: relative;
+  animation: ${rotate} 10s linear infinite;
   padding: 2rem 1rem;
+  margin: auto;
+  width: 50%;
 `;
 
 const Image = styled.img`
-  display: ${props => (props.displayProp ? "block" : "none")};
-  margin-left: auto;
-  margin-right: auto;
+  display: ${props => (props.displayProp ? "relative" : "none")};
+  margin: auto;
   width: 50%;
 
   :hover {
