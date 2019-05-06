@@ -30955,7 +30955,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin: auto;\n  width: 50%;\n\n  :hover {\n    border: 1px solid red;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin: auto;\n  width: 50%;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -30965,7 +30965,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  display: relative;\n  animation: ", " 10s linear infinite;\n  padding: 2rem 1rem;\n  margin: auto;\n  width: 50%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: relative;\n  animation: ", " 10s linear infinite;\n  padding: 2rem 1rem;\n  margin: 150px auto;\n  width: 50%;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -31019,7 +31019,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", "\n  width: 500px;\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 50px;\n  text-align: center;\n  border: 1px solid green;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", "\n  width: 500px;\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 50px;\n  text-align: center;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31031,13 +31031,15 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var StyledP = _styledComponents.default.p(_templateObject(), function (props) {
-  return props.showMessage ? "relative" : "none";
+  return props.showMessage ? "block" : "none";
 });
 
 var Message = function Message(props) {
+  var showMessage = props.showMessage,
+      message = props.message;
   return _react.default.createElement(StyledP, {
-    showMessage: props.showMessage
-  }, props.message);
+    showMessage: showMessage
+  }, message);
 };
 
 var _default = Message;
@@ -31050,7 +31052,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -31058,8 +31060,28 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  width: 300px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  border: 1px solid magenta;\n  text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31070,26 +31092,178 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var StyledDiv = _styledComponents.default.div(_templateObject(), function (props) {
+var StyledButton = _styledComponents.default.button(_templateObject(), function (props) {
+  return props.showEmailButton ? "relative" : "none";
+});
+
+var StyledInput = _styledComponents.default.input(_templateObject2(), function (props) {
   return props.showEmailButton ? "relative" : "none";
 });
 
 var EmailButton = function EmailButton(props) {
+  var message = props.message,
+      showEmailButton = props.showEmailButton;
+
+  var _useState = (0, _react.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      email = _useState2[0],
+      setEmail = _useState2[1];
+
   var sendMail = function sendMail(msg) {
     _axios.default.post("/email", {
-      data: msg
+      email: email,
+      msg: msg
     });
   };
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(StyledDiv, {
+  var handleChange = function handleChange(e) {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(StyledInput, {
+    showEmailButton: showEmailButton,
+    onChange: handleChange
+  }), _react.default.createElement(StyledButton, {
     onClick: function onClick() {
-      sendMail(props.message);
+      sendMail(message);
     },
-    showEmailButton: props.showEmailButton
-  }, "EmailButton!"));
+    showEmailButton: showEmailButton
+  }, "Email me!"));
 };
 
 var _default = EmailButton;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/NewMessageButton.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledButton = _styledComponents.default.button(_templateObject(), function (props) {
+  return props.showNewMessageButton ? "relative" : "none";
+});
+
+var NewMessageButton = function NewMessageButton(props) {
+  var getRandomMessage = props.getRandomMessage,
+      showNewMessageButton = props.showNewMessageButton;
+  return _react.default.createElement(StyledButton, {
+    onClick: getRandomMessage,
+    showNewMessageButton: showNewMessageButton
+  }, "New Message!");
+};
+
+var _default = NewMessageButton;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/SaveButton.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  width: 300px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledButton = _styledComponents.default.button(_templateObject(), function (props) {
+  return props.showSaveButton ? "relative" : "none";
+});
+
+var StyledInput = _styledComponents.default.input(_templateObject2(), function (props) {
+  return props.showSaveButton ? "relative" : "none";
+});
+
+var SaveButton = function SaveButton(props) {
+  var showSaveButton = props.showSaveButton,
+      message = props.message;
+
+  var _useState = (0, _react.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      name = _useState2[0],
+      setName = _useState2[1];
+
+  var saveToDatabase = function saveToDatabase(msg) {
+    _axios.default.post("/save", {
+      name: name,
+      msg: msg
+    });
+  };
+
+  var handleChange = function handleChange(e) {
+    e.preventDefault();
+    setName(e.target.value);
+  };
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(StyledButton, {
+    showSaveButton: showSaveButton,
+    onClick: function onClick() {
+      saveToDatabase(message);
+    }
+  }, "Save!"), _react.default.createElement(StyledInput, {
+    showSaveButton: showSaveButton,
+    onChange: handleChange
+  }));
+};
+
+var _default = SaveButton;
 exports.default = _default;
 },{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App.jsx":[function(require,module,exports) {
 "use strict";
@@ -31108,6 +31282,10 @@ var _Cookie = _interopRequireDefault(require("./Cookie.jsx"));
 var _Message = _interopRequireDefault(require("./Message.jsx"));
 
 var _EmailButton = _interopRequireDefault(require("./EmailButton.jsx"));
+
+var _NewMessageButton = _interopRequireDefault(require("./NewMessageButton.jsx"));
+
+var _SaveButton = _interopRequireDefault(require("./SaveButton.jsx"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -31132,7 +31310,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  border: 1px solid blue;\n  height: 100%;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  width: 100%;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31157,12 +31335,17 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
+      favorites: [],
       message: null,
       showCookie: true,
       showMessage: false,
-      showEmailButton: false
+      showEmailButton: false,
+      showEmailInput: false,
+      showNewMessageButton: false,
+      showSaveButton: false
     };
     _this.updateCookie = _this.updateCookie.bind(_assertThisInitialized(_this));
+    _this.getRandomMessage = _this.getRandomMessage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -31170,6 +31353,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.getRandomMessage();
+      this.getFavoriteMessages();
     }
   }, {
     key: "getRandomMessage",
@@ -31185,16 +31369,35 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "getFavoriteMessages",
+    value: function getFavoriteMessages() {
+      var _this3 = this;
+
+      _axios.default.get("/faves").then(function (_ref2) {
+        var data = _ref2.data;
+
+        _this3.setState({
+          favorites: data
+        });
+      });
+    }
+  }, {
     key: "updateCookie",
     value: function updateCookie() {
       var _this$state = this.state,
           showCookie = _this$state.showCookie,
           showMessage = _this$state.showMessage,
-          showEmailButton = _this$state.showEmailButton;
+          showEmailButton = _this$state.showEmailButton,
+          showEmailInput = _this$state.showEmailInput,
+          showNewMessageButton = _this$state.showNewMessageButton,
+          showSaveButton = _this$state.showSaveButton;
       this.setState({
         showCookie: !showCookie,
         showMessage: !showMessage,
-        showEmailButton: !showEmailButton
+        showEmailButton: !showEmailButton,
+        showEmailInput: !showEmailInput,
+        showNewMessageButton: !showNewMessageButton,
+        showSaveButton: !showSaveButton
       });
     }
   }, {
@@ -31204,7 +31407,9 @@ function (_React$Component) {
           message = _this$state2.message,
           showCookie = _this$state2.showCookie,
           showMessage = _this$state2.showMessage,
-          showEmailButton = _this$state2.showEmailButton;
+          showEmailButton = _this$state2.showEmailButton,
+          showNewMessageButton = _this$state2.showNewMessageButton,
+          showSaveButton = _this$state2.showSaveButton;
       return _react.default.createElement(StyledDiv, null, _react.default.createElement(_Cookie.default, {
         showCookie: showCookie,
         updateCookie: this.updateCookie
@@ -31213,6 +31418,12 @@ function (_React$Component) {
         message: message
       }), _react.default.createElement(_EmailButton.default, {
         showEmailButton: showEmailButton,
+        message: message
+      }), _react.default.createElement(_NewMessageButton.default, {
+        showNewMessageButton: showNewMessageButton,
+        getRandomMessage: this.getRandomMessage
+      }), _react.default.createElement(_SaveButton.default, {
+        showSaveButton: showSaveButton,
         message: message
       }));
     }
@@ -31223,7 +31434,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","./EmailButton.jsx":"components/EmailButton.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","./EmailButton.jsx":"components/EmailButton.jsx","./NewMessageButton.jsx":"components/NewMessageButton.jsx","./SaveButton.jsx":"components/SaveButton.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

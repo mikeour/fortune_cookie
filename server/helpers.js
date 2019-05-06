@@ -5,7 +5,7 @@ module.exports.getRandomMessage = () => {
   return axios.get("https://api.adviceslip.com/advice");
 };
 
-module.exports.sendMail = async (email, msg) => {
+module.exports.sendMail = (email, msg) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {

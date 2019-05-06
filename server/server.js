@@ -6,6 +6,10 @@ const bodyParser = require("body-parser");
 const app = express();
 
 const { getRandomMessage, sendMail } = require("./helpers.js");
+const {
+  getFavoriteMessages,
+  saveFavoriteMessage
+} = require("../database/helpers.js");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -18,9 +22,20 @@ app.get("/api/random", (req, res) => {
   });
 });
 
+app.get("/faves", (req, res) => {
+  getFavoriteMessages(results => {
+    res.send(results);
+  });
+});
+
+app.post("/save", (req, res) => {
+  const { name, msg } = req.body;
+  saveFavoriteMessage(name, msg);
+});
+
 app.post("/email", (req, res) => {
-  const msg = req.body.data;
-  sendMail("michaeljroeslein@gmail.com", msg);
+  const { email, msg } = req.body;
+  sendMail(email, msg);
 });
 
 app.listen(3001, () => console.log("Connected on 3001!"));

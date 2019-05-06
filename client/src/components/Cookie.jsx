@@ -15,7 +15,7 @@ const Rotate = styled.div`
   display: relative;
   animation: ${rotate} 10s linear infinite;
   padding: 2rem 1rem;
-  margin: auto;
+  margin: 150px auto;
   width: 50%;
 `;
 
@@ -23,10 +23,6 @@ const Image = styled.img`
   display: ${props => (props.displayProp ? "relative" : "none")};
   margin: auto;
   width: 50%;
-
-  :hover {
-    border: 1px solid red;
-  }
 `;
 
 const Cookie = props => {
