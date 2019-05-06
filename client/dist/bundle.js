@@ -30955,7 +30955,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  width: 35%;\n\n  :hover {\n    border: 1px solid red;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  width: 50%;\n\n  :hover {\n    border: 1px solid red;\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -30990,15 +30990,57 @@ var rotate = (0, _styledComponents.keyframes)(_templateObject());
 
 var Rotate = _styledComponents.default.div(_templateObject2(), rotate);
 
-var Image = _styledComponents.default.img(_templateObject3());
+var Image = _styledComponents.default.img(_templateObject3(), function (props) {
+  return props.displayProp ? "block" : "none";
+});
 
-var Cookie = function Cookie() {
+var Cookie = function Cookie(props) {
   return _react.default.createElement(Rotate, null, _react.default.createElement(Image, {
+    onClick: props.updateCookie,
+    displayProp: props.showCookie,
     src: window.location.origin + "/assets/cookie.png"
   }));
 };
 
 var _default = Cookie;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Message.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: ", "\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 50px;\n  text-align: center;\n  border: 1px solid green;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledP = _styledComponents.default.p(_templateObject(), function (props) {
+  return props.showMessage ? "relative" : "none";
+});
+
+var Message = function Message(props) {
+  return _react.default.createElement(StyledP, {
+    showMessage: props.showMessage
+  }, props.message);
+};
+
+var _default = Message;
 exports.default = _default;
 },{"react":"../../node_modules/react/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App.jsx":[function(require,module,exports) {
 "use strict";
@@ -31014,6 +31056,10 @@ var _axios = _interopRequireDefault(require("axios"));
 
 var _Cookie = _interopRequireDefault(require("./Cookie.jsx"));
 
+var _Message = _interopRequireDefault(require("./Message.jsx"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -31026,13 +31072,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  border: 1px solid blue;\n  height: 100%;\n  width: 100%;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledDiv = _styledComponents.default.div(_templateObject());
 
 var App =
 /*#__PURE__*/
@@ -31046,8 +31106,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      message: null
+      message: null,
+      showCookie: true,
+      showMessage: false
     };
+    _this.updateCookie = _this.updateCookie.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -31070,10 +31133,30 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "updateCookie",
+    value: function updateCookie() {
+      var _this$state = this.state,
+          showCookie = _this$state.showCookie,
+          showMessage = _this$state.showMessage;
+      this.setState({
+        showCookie: !showCookie,
+        showMessage: !showMessage
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var message = this.state.message;
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Cookie.default, null));
+      var _this$state2 = this.state,
+          message = _this$state2.message,
+          showCookie = _this$state2.showCookie,
+          showMessage = _this$state2.showMessage;
+      return _react.default.createElement(StyledDiv, null, _react.default.createElement(_Cookie.default, {
+        showCookie: showCookie,
+        updateCookie: this.updateCookie
+      }), _react.default.createElement(_Message.default, {
+        showMessage: showMessage,
+        message: message
+      }));
     }
   }]);
 
@@ -31082,7 +31165,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

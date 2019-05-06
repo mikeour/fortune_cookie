@@ -18,20 +18,24 @@ const Rotate = styled.div`
 `;
 
 const Image = styled.img`
-  display: block;
+  display: ${props => (props.displayProp ? "block" : "none")};
   margin-left: auto;
   margin-right: auto;
-  width: 35%;
+  width: 50%;
 
   :hover {
     border: 1px solid red;
   }
 `;
 
-const Cookie = () => {
+const Cookie = props => {
   return (
     <Rotate>
-      <Image src={window.location.origin + "/assets/cookie.png"} />
+      <Image
+        onClick={props.updateCookie}
+        displayProp={props.showCookie}
+        src={window.location.origin + "/assets/cookie.png"}
+      />
     </Rotate>
   );
 };

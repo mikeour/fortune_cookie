@@ -7,7 +7,7 @@ const { getRandomMessage } = require("./helpers.js");
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("/api/random", (req, res) => {
-  getRandomMessage(results => {
+  getRandomMessage().then(({ data: results }) => {
     const { advice } = results.slip;
     res.send(advice);
   });
