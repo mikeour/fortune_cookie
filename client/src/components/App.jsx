@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Cookie from "./Cookie.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,11 @@ class App extends React.Component {
 
   render() {
     const { message } = this.state;
-    return <React.Fragment>{message && <p>{message}</p>}</React.Fragment>;
+    return (
+      <React.Fragment>
+        <Cookie />
+      </React.Fragment>
+    );
   }
 }
 
