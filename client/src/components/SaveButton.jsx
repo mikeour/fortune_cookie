@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -30,7 +30,7 @@ const SaveButton = props => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <StyledButton
         showSaveButton={showSaveButton}
         onClick={() => {
@@ -40,7 +40,7 @@ const SaveButton = props => {
         Save!
       </StyledButton>
       <StyledInput showSaveButton={showSaveButton} onChange={handleChange} />
-    </React.Fragment>
+    </Fragment>
   );
 };
 

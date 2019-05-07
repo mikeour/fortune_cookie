@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -32,7 +32,7 @@ const EmailButton = props => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <StyledInput showEmailButton={showEmailButton} onChange={handleChange} />
       <StyledButton
         onClick={() => {
@@ -42,7 +42,7 @@ const EmailButton = props => {
       >
         Email me!
       </StyledButton>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

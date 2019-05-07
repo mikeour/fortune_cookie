@@ -11,6 +11,8 @@ const {
   saveFavoriteMessage
 } = require("../database/helpers.js");
 
+const port = process.env.PORT || 3001;
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -38,4 +40,4 @@ app.post("/email", (req, res) => {
   sendMail(email, msg);
 });
 
-app.listen(3001, () => console.log("Connected on 3001!"));
+app.listen(port, () => console.log(`Connected on ${port}!`));

@@ -5,6 +5,8 @@ import Message from "./Message.jsx";
 import EmailButton from "./EmailButton.jsx";
 import NewMessageButton from "./NewMessageButton.jsx";
 import SaveButton from "./SaveButton.jsx";
+import FavesButton from "./FavesButton.jsx";
+import Favorites from "./Favorites.jsx";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -28,11 +30,14 @@ class App extends React.Component {
       showEmailButton: false,
       showEmailInput: false,
       showNewMessageButton: false,
-      showSaveButton: false
+      showSaveButton: false,
+      showFavesButton: false,
+      showFavorites: false
     };
 
     this.updateCookie = this.updateCookie.bind(this);
     this.getRandomMessage = this.getRandomMessage.bind(this);
+    this.updateFavorites = this.updateFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -41,19 +46,29 @@ class App extends React.Component {
   }
 
   getRandomMessage() {
-    axios.get("/api/random").then(({ data }) => {
+    axios.get("/api/random").then(({ data: messages }) => {
       this.setState({
-        message: data
+        message: messages
       });
     });
   }
 
   getFavoriteMessages() {
-    axios.get("/faves").then(({ data }) => {
+    axios.get("/faves").then(({ data: faves }) => {
       this.setState({
-        favorites: data
+        favorites: faves
       });
     });
+  }
+
+  updateFavorites() {
+    const { showFavorites } = this.state;
+    this.setState(
+      {
+        showFavorites: !showFavorites
+      },
+      () => this.getFavoriteMessages()
+    );
   }
 
   updateCookie() {
@@ -63,7 +78,8 @@ class App extends React.Component {
       showEmailButton,
       showEmailInput,
       showNewMessageButton,
-      showSaveButton
+      showSaveButton,
+      showFavesButton
     } = this.state;
     this.setState({
       showCookie: !showCookie,
@@ -71,30 +87,42 @@ class App extends React.Component {
       showEmailButton: !showEmailButton,
       showEmailInput: !showEmailInput,
       showNewMessageButton: !showNewMessageButton,
-      showSaveButton: !showSaveButton
+      showSaveButton: !showSaveButton,
+      showFavesButton: !showFavesButton
     });
   }
 
   render() {
     const {
       message,
+      favorites,
       showCookie,
       showMessage,
       showEmailButton,
       showNewMessageButton,
-      showSaveButton
+      showSaveButton,
+      showFavesButton,
+      showFavorites
     } = this.state;
+
+    const { updateCookie, getRandomMessage, updateFavorites } = this;
+
     return (
       <Wrapper>
-        <Cookie showCookie={showCookie} updateCookie={this.updateCookie} />
+        <Cookie showCookie={showCookie} updateCookie={updateCookie} />
         <Message showMessage={showMessage} message={message} />
         <StyledDiv>
           <EmailButton showEmailButton={showEmailButton} message={message} />
           <NewMessageButton
             showNewMessageButton={showNewMessageButton}
-            getRandomMessage={this.getRandomMessage}
+            getRandomMessage={getRandomMessage}
           />
           <SaveButton showSaveButton={showSaveButton} message={message} />
+          <FavesButton
+            showFavesButton={showFavesButton}
+            updateFavorites={updateFavorites}
+          />
+          <Favorites showFavorites={showFavorites} favorites={favorites} />
         </StyledDiv>
       </Wrapper>
     );

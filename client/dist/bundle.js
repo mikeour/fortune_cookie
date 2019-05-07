@@ -31127,7 +31127,7 @@ var EmailButton = function EmailButton(props) {
     setEmail(e.target.value);
   };
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(StyledInput, {
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement(StyledInput, {
     showEmailButton: showEmailButton,
     onChange: handleChange
   }), _react.default.createElement(StyledButton, {
@@ -31258,7 +31258,7 @@ var SaveButton = function SaveButton(props) {
     setName(e.target.value);
   };
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(StyledButton, {
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement(StyledButton, {
     showSaveButton: showSaveButton,
     onClick: function onClick() {
       saveToDatabase(message);
@@ -31271,7 +31271,102 @@ var SaveButton = function SaveButton(props) {
 
 var _default = SaveButton;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/FavesButton.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledButton = _styledComponents.default.button(_templateObject(), function (props) {
+  return props.showFavesButton ? "relative" : "none";
+});
+
+var FavesButton = function FavesButton(props) {
+  var showFavesButton = props.showFavesButton,
+      updateFavorites = props.updateFavorites;
+  return _react.default.createElement(StyledButton, {
+    showFavesButton: showFavesButton,
+    onClick: updateFavorites
+  }, "Show Faves!");
+};
+
+var _default = FavesButton;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Favorites.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledUl = _styledComponents.default.ul(_templateObject());
+
+var StyledLi = _styledComponents.default.li(_templateObject2());
+
+var Favorites = function Favorites(props) {
+  var favorites = props.favorites,
+      showFavorites = props.showFavorites;
+  return _react.default.createElement(StyledUl, null, showFavorites && favorites.map(function (favorite, i) {
+    var name = favorite.name,
+        msg = favorite.msg;
+    return _react.default.createElement(StyledLi, {
+      key: i
+    }, name, " loved ", msg);
+  }));
+};
+
+var _default = Favorites;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31292,6 +31387,10 @@ var _EmailButton = _interopRequireDefault(require("./EmailButton.jsx"));
 var _NewMessageButton = _interopRequireDefault(require("./NewMessageButton.jsx"));
 
 var _SaveButton = _interopRequireDefault(require("./SaveButton.jsx"));
+
+var _FavesButton = _interopRequireDefault(require("./FavesButton.jsx"));
+
+var _Favorites = _interopRequireDefault(require("./Favorites.jsx"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -31360,10 +31459,13 @@ function (_React$Component) {
       showEmailButton: false,
       showEmailInput: false,
       showNewMessageButton: false,
-      showSaveButton: false
+      showSaveButton: false,
+      showFavesButton: false,
+      showFavorites: false
     };
     _this.updateCookie = _this.updateCookie.bind(_assertThisInitialized(_this));
     _this.getRandomMessage = _this.getRandomMessage.bind(_assertThisInitialized(_this));
+    _this.updateFavorites = _this.updateFavorites.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -31379,10 +31481,10 @@ function (_React$Component) {
       var _this2 = this;
 
       _axios.default.get("/api/random").then(function (_ref) {
-        var data = _ref.data;
+        var messages = _ref.data;
 
         _this2.setState({
-          message: data
+          message: messages
         });
       });
     }
@@ -31392,11 +31494,23 @@ function (_React$Component) {
       var _this3 = this;
 
       _axios.default.get("/faves").then(function (_ref2) {
-        var data = _ref2.data;
+        var faves = _ref2.data;
 
         _this3.setState({
-          favorites: data
+          favorites: faves
         });
+      });
+    }
+  }, {
+    key: "updateFavorites",
+    value: function updateFavorites() {
+      var _this4 = this;
+
+      var showFavorites = this.state.showFavorites;
+      this.setState({
+        showFavorites: !showFavorites
+      }, function () {
+        return _this4.getFavoriteMessages();
       });
     }
   }, {
@@ -31408,14 +31522,16 @@ function (_React$Component) {
           showEmailButton = _this$state.showEmailButton,
           showEmailInput = _this$state.showEmailInput,
           showNewMessageButton = _this$state.showNewMessageButton,
-          showSaveButton = _this$state.showSaveButton;
+          showSaveButton = _this$state.showSaveButton,
+          showFavesButton = _this$state.showFavesButton;
       this.setState({
         showCookie: !showCookie,
         showMessage: !showMessage,
         showEmailButton: !showEmailButton,
         showEmailInput: !showEmailInput,
         showNewMessageButton: !showNewMessageButton,
-        showSaveButton: !showSaveButton
+        showSaveButton: !showSaveButton,
+        showFavesButton: !showFavesButton
       });
     }
   }, {
@@ -31423,14 +31539,20 @@ function (_React$Component) {
     value: function render() {
       var _this$state2 = this.state,
           message = _this$state2.message,
+          favorites = _this$state2.favorites,
           showCookie = _this$state2.showCookie,
           showMessage = _this$state2.showMessage,
           showEmailButton = _this$state2.showEmailButton,
           showNewMessageButton = _this$state2.showNewMessageButton,
-          showSaveButton = _this$state2.showSaveButton;
+          showSaveButton = _this$state2.showSaveButton,
+          showFavesButton = _this$state2.showFavesButton,
+          showFavorites = _this$state2.showFavorites;
+      var updateCookie = this.updateCookie,
+          getRandomMessage = this.getRandomMessage,
+          updateFavorites = this.updateFavorites;
       return _react.default.createElement(Wrapper, null, _react.default.createElement(_Cookie.default, {
         showCookie: showCookie,
-        updateCookie: this.updateCookie
+        updateCookie: updateCookie
       }), _react.default.createElement(_Message.default, {
         showMessage: showMessage,
         message: message
@@ -31439,10 +31561,16 @@ function (_React$Component) {
         message: message
       }), _react.default.createElement(_NewMessageButton.default, {
         showNewMessageButton: showNewMessageButton,
-        getRandomMessage: this.getRandomMessage
+        getRandomMessage: getRandomMessage
       }), _react.default.createElement(_SaveButton.default, {
         showSaveButton: showSaveButton,
         message: message
+      }), _react.default.createElement(_FavesButton.default, {
+        showFavesButton: showFavesButton,
+        updateFavorites: updateFavorites
+      }), _react.default.createElement(_Favorites.default, {
+        showFavorites: showFavorites,
+        favorites: favorites
       })));
     }
   }]);
@@ -31452,7 +31580,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","./EmailButton.jsx":"components/EmailButton.jsx","./NewMessageButton.jsx":"components/NewMessageButton.jsx","./SaveButton.jsx":"components/SaveButton.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","./EmailButton.jsx":"components/EmailButton.jsx","./NewMessageButton.jsx":"components/NewMessageButton.jsx","./SaveButton.jsx":"components/SaveButton.jsx","./FavesButton.jsx":"components/FavesButton.jsx","./Favorites.jsx":"components/Favorites.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -31492,7 +31620,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59514" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53903" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
