@@ -18,7 +18,7 @@ module.exports.sendMail = (email, msg) => {
     from: process.env.BOT_EMAIL,
     to: `${email}`,
     subject: "Your Message from Fortune Cookie Has Arrived!",
-    text: `${msg} -Sent using Node.js`
+    html: `<h3>${msg}</h3><br><p>-Sent using Node.js</p>`
   };
 
   transporter.sendMail(mailOptions, function(error, info) {

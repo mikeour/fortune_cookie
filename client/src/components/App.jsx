@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import styled, { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 import Cookie from "./Cookie.jsx";
 import Message from "./Message.jsx";
 import EmailButton from "./EmailButton.jsx";
@@ -7,7 +9,10 @@ import NewMessageButton from "./NewMessageButton.jsx";
 import SaveButton from "./SaveButton.jsx";
 import FavesButton from "./FavesButton.jsx";
 import Favorites from "./Favorites.jsx";
-import styled from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+`;
 
 const Wrapper = styled.div`
   height: 100%;
@@ -109,6 +114,7 @@ class App extends React.Component {
 
     return (
       <Wrapper>
+        <GlobalStyle />
         <Cookie showCookie={showCookie} updateCookie={updateCookie} />
         <Message showMessage={showMessage} message={message} />
         <StyledDiv>

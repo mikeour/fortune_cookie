@@ -30938,7 +30938,55 @@ if ("development" !== 'production' && "development" !== 'test' && typeof window 
 
 var _default = styled;
 exports.default = _default;
-},{"stylis/stylis.min":"../../node_modules/stylis/stylis.min.js","stylis-rule-sheet":"../../node_modules/stylis-rule-sheet/index.js","react":"../../node_modules/react/index.js","@emotion/unitless":"../../node_modules/@emotion/unitless/dist/unitless.browser.esm.js","react-is":"../../node_modules/react-is/index.js","memoize-one":"../../node_modules/memoize-one/dist/memoize-one.esm.js","prop-types":"../../node_modules/prop-types/index.js","react-dom":"../../node_modules/react-dom/index.js","@emotion/is-prop-valid":"../../node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","process":"../../node_modules/process/browser.js"}],"components/Cookie.jsx":[function(require,module,exports) {
+},{"stylis/stylis.min":"../../node_modules/stylis/stylis.min.js","stylis-rule-sheet":"../../node_modules/stylis-rule-sheet/index.js","react":"../../node_modules/react/index.js","@emotion/unitless":"../../node_modules/@emotion/unitless/dist/unitless.browser.esm.js","react-is":"../../node_modules/react-is/index.js","memoize-one":"../../node_modules/memoize-one/dist/memoize-one.esm.js","prop-types":"../../node_modules/prop-types/index.js","react-dom":"../../node_modules/react-dom/index.js","@emotion/is-prop-valid":"../../node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","process":"../../node_modules/process/browser.js"}],"../../node_modules/styled-reset/lib/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = exports.Reset = exports.reset = void 0;
+
+var _styledComponents = require("styled-components");
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["", ""]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n  line-height: 1;\n}\nol, ul {\n  list-style: none;\n}\nblockquote, q {\n  quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
+var reset = (0, _styledComponents.css)(_templateObject());
+exports.reset = reset;
+var Reset = (0, _styledComponents.createGlobalStyle)(_templateObject2(), reset);
+exports.Reset = Reset;
+var _default = reset;
+exports["default"] = _default;
+},{"styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Cookie.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31378,6 +31426,10 @@ var _react = _interopRequireDefault(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _styledComponents = _interopRequireWildcard(require("styled-components"));
+
+var _styledReset = _interopRequireDefault(require("styled-reset"));
+
 var _Cookie = _interopRequireDefault(require("./Cookie.jsx"));
 
 var _Message = _interopRequireDefault(require("./Message.jsx"));
@@ -31392,7 +31444,7 @@ var _FavesButton = _interopRequireDefault(require("./FavesButton.jsx"));
 
 var _Favorites = _interopRequireDefault(require("./Favorites.jsx"));
 
-var _styledComponents = _interopRequireDefault(require("styled-components"));
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31414,8 +31466,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _templateObject2() {
+function _templateObject3() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  width: 100%;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  width: 100%;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -31425,7 +31487,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31436,9 +31498,11 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Wrapper = _styledComponents.default.div(_templateObject());
+var GlobalStyle = (0, _styledComponents.createGlobalStyle)(_templateObject(), _styledReset.default);
 
-var StyledDiv = _styledComponents.default.div(_templateObject2());
+var Wrapper = _styledComponents.default.div(_templateObject2());
+
+var StyledDiv = _styledComponents.default.div(_templateObject3());
 
 var App =
 /*#__PURE__*/
@@ -31550,7 +31614,7 @@ function (_React$Component) {
       var updateCookie = this.updateCookie,
           getRandomMessage = this.getRandomMessage,
           updateFavorites = this.updateFavorites;
-      return _react.default.createElement(Wrapper, null, _react.default.createElement(_Cookie.default, {
+      return _react.default.createElement(Wrapper, null, _react.default.createElement(GlobalStyle, null), _react.default.createElement(_Cookie.default, {
         showCookie: showCookie,
         updateCookie: updateCookie
       }), _react.default.createElement(_Message.default, {
@@ -31580,7 +31644,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","./EmailButton.jsx":"components/EmailButton.jsx","./NewMessageButton.jsx":"components/NewMessageButton.jsx","./SaveButton.jsx":"components/SaveButton.jsx","./FavesButton.jsx":"components/FavesButton.jsx","./Favorites.jsx":"components/Favorites.jsx","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js","styled-reset":"../../node_modules/styled-reset/lib/index.js","./Cookie.jsx":"components/Cookie.jsx","./Message.jsx":"components/Message.jsx","./EmailButton.jsx":"components/EmailButton.jsx","./NewMessageButton.jsx":"components/NewMessageButton.jsx","./SaveButton.jsx":"components/SaveButton.jsx","./FavesButton.jsx":"components/FavesButton.jsx","./Favorites.jsx":"components/Favorites.jsx"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -31620,7 +31684,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53903" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63630" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
