@@ -59,7 +59,8 @@ const EmailWrapper = styled.div`
 `;
 
 const EmailDiv = styled.div`
-  width: 50%;
+  width: 65%;
+  padding: 15px;
   margin: 0 auto;
   background: white;
   border: 1px solid black;

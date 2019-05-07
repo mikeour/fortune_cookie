@@ -31495,7 +31495,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  width: 50%;\n  margin: 0 auto;\n  background: white;\n  border: 1px solid black;\n  border-radius: 15px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 65%;\n  padding: 15px;\n  margin: 0 auto;\n  background: white;\n  border: 1px solid black;\n  border-radius: 15px;\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
