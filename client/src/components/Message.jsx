@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledP = styled.p`
-  display: ${props => (props.showMessage ? "block" : "none")}
+  display: ${props => (props.showMessage ? "relative" : "none")}
   width: 500px;
   margin-left: auto;
   margin-right: auto;

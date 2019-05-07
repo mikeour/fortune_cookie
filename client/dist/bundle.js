@@ -30965,7 +30965,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  display: relative;\n  animation: ", " 10s linear infinite;\n  padding: 2rem 1rem;\n  margin: 150px auto;\n  width: 50%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  animation: ", " 10s linear infinite;\n  padding: 2rem 1rem;\n  margin: 150px auto;\n  width: 50%;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -30988,17 +30988,23 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var rotate = (0, _styledComponents.keyframes)(_templateObject());
 
-var Rotate = _styledComponents.default.div(_templateObject2(), rotate);
+var Rotate = _styledComponents.default.div(_templateObject2(), function (props) {
+  return props.displayProp ? "relative" : "none";
+}, rotate);
 
 var Image = _styledComponents.default.img(_templateObject3(), function (props) {
   return props.displayProp ? "relative" : "none";
 });
 
 var Cookie = function Cookie(props) {
-  return _react.default.createElement(Rotate, null, _react.default.createElement(Image, {
-    onClick: props.updateCookie,
-    displayProp: props.showCookie,
-    src: window.location.origin + "/assets/cookie.png"
+  var updateCookie = props.updateCookie,
+      showCookie = props.showCookie;
+  return _react.default.createElement(Rotate, {
+    displayProp: showCookie
+  }, _react.default.createElement(Image, {
+    onClick: updateCookie,
+    displayProp: showCookie,
+    src: window.location.origin + "/assets/cookie2.png"
   }));
 };
 
@@ -31031,7 +31037,7 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var StyledP = _styledComponents.default.p(_templateObject(), function (props) {
-  return props.showMessage ? "block" : "none";
+  return props.showMessage ? "relative" : "none";
 });
 
 var Message = function Message(props) {
@@ -31309,6 +31315,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  width: 100%;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n  height: 100%;\n  width: 100%;\n"]);
 
@@ -31321,7 +31337,9 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var StyledDiv = _styledComponents.default.div(_templateObject());
+var Wrapper = _styledComponents.default.div(_templateObject());
+
+var StyledDiv = _styledComponents.default.div(_templateObject2());
 
 var App =
 /*#__PURE__*/
@@ -31410,13 +31428,13 @@ function (_React$Component) {
           showEmailButton = _this$state2.showEmailButton,
           showNewMessageButton = _this$state2.showNewMessageButton,
           showSaveButton = _this$state2.showSaveButton;
-      return _react.default.createElement(StyledDiv, null, _react.default.createElement(_Cookie.default, {
+      return _react.default.createElement(Wrapper, null, _react.default.createElement(_Cookie.default, {
         showCookie: showCookie,
         updateCookie: this.updateCookie
       }), _react.default.createElement(_Message.default, {
         showMessage: showMessage,
         message: message
-      }), _react.default.createElement(_EmailButton.default, {
+      }), _react.default.createElement(StyledDiv, null, _react.default.createElement(_EmailButton.default, {
         showEmailButton: showEmailButton,
         message: message
       }), _react.default.createElement(_NewMessageButton.default, {
@@ -31425,7 +31443,7 @@ function (_React$Component) {
       }), _react.default.createElement(_SaveButton.default, {
         showSaveButton: showSaveButton,
         message: message
-      }));
+      })));
     }
   }]);
 

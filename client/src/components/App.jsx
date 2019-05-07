@@ -7,8 +7,13 @@ import NewMessageButton from "./NewMessageButton.jsx";
 import SaveButton from "./SaveButton.jsx";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
+const Wrapper = styled.div`
   height: 100%;
+  width: 100%;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
   width: 100%;
 `;
 
@@ -80,16 +85,18 @@ class App extends React.Component {
       showSaveButton
     } = this.state;
     return (
-      <StyledDiv>
+      <Wrapper>
         <Cookie showCookie={showCookie} updateCookie={this.updateCookie} />
         <Message showMessage={showMessage} message={message} />
-        <EmailButton showEmailButton={showEmailButton} message={message} />
-        <NewMessageButton
-          showNewMessageButton={showNewMessageButton}
-          getRandomMessage={this.getRandomMessage}
-        />
-        <SaveButton showSaveButton={showSaveButton} message={message} />
-      </StyledDiv>
+        <StyledDiv>
+          <EmailButton showEmailButton={showEmailButton} message={message} />
+          <NewMessageButton
+            showNewMessageButton={showNewMessageButton}
+            getRandomMessage={this.getRandomMessage}
+          />
+          <SaveButton showSaveButton={showSaveButton} message={message} />
+        </StyledDiv>
+      </Wrapper>
     );
   }
 }

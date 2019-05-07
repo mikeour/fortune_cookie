@@ -12,7 +12,7 @@ const rotate = keyframes`
 `;
 
 const Rotate = styled.div`
-  display: relative;
+  display: ${props => (props.displayProp ? "relative" : "none")};
   animation: ${rotate} 10s linear infinite;
   padding: 2rem 1rem;
   margin: 150px auto;
@@ -26,12 +26,13 @@ const Image = styled.img`
 `;
 
 const Cookie = props => {
+  const { updateCookie, showCookie } = props;
   return (
-    <Rotate>
+    <Rotate displayProp={showCookie}>
       <Image
-        onClick={props.updateCookie}
-        displayProp={props.showCookie}
-        src={window.location.origin + "/assets/cookie.png"}
+        onClick={updateCookie}
+        displayProp={showCookie}
+        src={window.location.origin + "/assets/cookie2.png"}
       />
     </Rotate>
   );
