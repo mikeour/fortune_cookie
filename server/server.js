@@ -24,7 +24,7 @@ app.get("/api/random", (req, res) => {
   });
 });
 
-app.get("/faves", (req, res) => {
+app.get("/api/faves", (req, res) => {
   getFavoriteMessages(results => {
     res.send(results);
   });

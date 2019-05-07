@@ -31066,14 +31066,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", "\n  width: 500px;\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 50px;\n  text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", "\n  width: 65%;\n  background-color: white;\n  margin: 100px auto;\n  padding: 25px;\n  font-size: 50px;\n  text-align: center;\n  justify-content: center;\n  vertical-align: center;\n  border: 1px solid black;\n  border-radius: 15px;\n  font-family: 'Roboto', sans-serif;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31088,12 +31100,18 @@ var StyledP = _styledComponents.default.p(_templateObject(), function (props) {
   return props.showMessage ? "relative" : "none";
 });
 
+var StyledImage = _styledComponents.default.img(_templateObject2(), function (props) {
+  return props.showMessage ? "relative" : "none";
+});
+
 var Message = function Message(props) {
   var showMessage = props.showMessage,
       message = props.message;
-  return _react.default.createElement(StyledP, {
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement(StyledImage, {
+    src: window.location.origin + "/assets/open_cookie.png"
+  }), _react.default.createElement(StyledP, {
     showMessage: showMessage
-  }, message);
+  }, message));
 };
 
 var _default = Message;
@@ -31125,7 +31143,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  width: 300px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin: 0 auto 10px auto;\n  width: 90%;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -31135,7 +31153,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 18px;\n  justify-content: center;\n  text-align: center;\n  opacity: 0.6;\n  transition: 0.3s;\n  border-radius: 6px;\n  padding: 5px;\n\n  :hover {\n    opacity: 1;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31147,11 +31165,11 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var StyledButton = _styledComponents.default.button(_templateObject(), function (props) {
-  return props.showEmailButton ? "relative" : "none";
+  return props.showEmailButton ? "block" : "none";
 });
 
 var StyledInput = _styledComponents.default.input(_templateObject2(), function (props) {
-  return props.showEmailButton ? "relative" : "none";
+  return props.showEmailButton ? "block" : "none";
 });
 
 var EmailButton = function EmailButton(props) {
@@ -31203,7 +31221,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n  opacity: 0.6;\n  transition: 0.3s;\n\n  :hover {\n    opacity: 1;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31256,7 +31274,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  width: 300px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin: 0 auto 10px auto;\n  width: 90%;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -31266,7 +31284,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  margin-left: auto;\n  margin-right: auto;\n  font-size: 18px;\n  justify-content: center;\n  text-align: center;\n  opacity: 0.6;\n  transition: 0.3s;\n  border-radius: 6px;\n  padding: 5px;\n\n  :hover {\n    opacity: 1;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31278,11 +31296,11 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var StyledButton = _styledComponents.default.button(_templateObject(), function (props) {
-  return props.showSaveButton ? "relative" : "none";
+  return props.showSaveButton ? "block" : "none";
 });
 
 var StyledInput = _styledComponents.default.input(_templateObject2(), function (props) {
-  return props.showSaveButton ? "relative" : "none";
+  return props.showSaveButton ? "block" : "none";
 });
 
 var SaveButton = function SaveButton(props) {
@@ -31306,15 +31324,15 @@ var SaveButton = function SaveButton(props) {
     setName(e.target.value);
   };
 
-  return _react.default.createElement(_react.Fragment, null, _react.default.createElement(StyledButton, {
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement(StyledInput, {
+    showSaveButton: showSaveButton,
+    onChange: handleChange
+  }), _react.default.createElement(StyledButton, {
     showSaveButton: showSaveButton,
     onClick: function onClick() {
       saveToDatabase(message);
     }
-  }, "Save!"), _react.default.createElement(StyledInput, {
-    showSaveButton: showSaveButton,
-    onChange: handleChange
-  }));
+  }, "Save!"));
 };
 
 var _default = SaveButton;
@@ -31334,7 +31352,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: ", ";\n  font-size: 32px;\n  justify-content: center;\n  text-align: center;\n  opacity: 0.6;\n  transition: 0.3s;\n\n  :hover {\n    opacity: 1;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31466,6 +31484,56 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n  width: 50%;\n"]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n  width: 50%;\n  margin: 0 auto;\n  background: white;\n  border: 1px solid black;\n  border-radius: 15px;\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n  justify-content: center;\n  display: inline-block;\n  width: 50%;\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  padding: 15px;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: 350px;\n  width: 100%;\n  margin: auto;\n  position: relative;\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject3() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  width: 100%;\n"]);
 
@@ -31487,7 +31555,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n  \n  html { \n    background: url('https://upload.wikimedia.org/wikipedia/commons/d/d2/Fortune_cookies.jpg') no-repeat center center fixed; \n    -webkit-background-size: cover;\n    -moz-background-size: cover;\n    -o-background-size: cover;\n    background-size: cover;\n  }\n  \n  * {\n    font-family: 'Roboto', sans-serif;\n    box-sizing: border-box;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31504,6 +31572,16 @@ var Wrapper = _styledComponents.default.div(_templateObject2());
 
 var StyledDiv = _styledComponents.default.div(_templateObject3());
 
+var StyledMessageDiv = _styledComponents.default.div(_templateObject4());
+
+var StyledText = _styledComponents.default.p(_templateObject5());
+
+var EmailWrapper = _styledComponents.default.div(_templateObject6());
+
+var EmailDiv = _styledComponents.default.div(_templateObject7());
+
+var SaveWrapper = _styledComponents.default.div(_templateObject8());
+
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -31516,8 +31594,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      favorites: [],
       message: null,
+      favorites: [],
       showCookie: true,
       showMessage: false,
       showEmailButton: false,
@@ -31527,9 +31605,10 @@ function (_React$Component) {
       showFavesButton: false,
       showFavorites: false
     };
-    _this.updateCookie = _this.updateCookie.bind(_assertThisInitialized(_this));
     _this.getRandomMessage = _this.getRandomMessage.bind(_assertThisInitialized(_this));
+    _this.getFavoriteMessages = _this.getFavoriteMessages.bind(_assertThisInitialized(_this));
     _this.updateFavorites = _this.updateFavorites.bind(_assertThisInitialized(_this));
+    _this.updateCookie = _this.updateCookie.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -31557,7 +31636,7 @@ function (_React$Component) {
     value: function getFavoriteMessages() {
       var _this3 = this;
 
-      _axios.default.get("/faves").then(function (_ref2) {
+      _axios.default.get("/api/faves").then(function (_ref2) {
         var faves = _ref2.data;
 
         _this3.setState({
@@ -31614,28 +31693,22 @@ function (_React$Component) {
       var updateCookie = this.updateCookie,
           getRandomMessage = this.getRandomMessage,
           updateFavorites = this.updateFavorites;
-      return _react.default.createElement(Wrapper, null, _react.default.createElement(GlobalStyle, null), _react.default.createElement(_Cookie.default, {
+      return _react.default.createElement(Wrapper, null, _react.default.createElement(_Cookie.default, {
         showCookie: showCookie,
         updateCookie: updateCookie
-      }), _react.default.createElement(_Message.default, {
+      }), _react.default.createElement(StyledMessageDiv, null, _react.default.createElement(_Message.default, {
         showMessage: showMessage,
         message: message
-      }), _react.default.createElement(StyledDiv, null, _react.default.createElement(_EmailButton.default, {
+      })), _react.default.createElement(StyledDiv, null, _react.default.createElement(EmailWrapper, null, _react.default.createElement(EmailDiv, null, _react.default.createElement(StyledText, null, "Don't want to forget your advice? We'll email it to you!"), _react.default.createElement(_EmailButton.default, {
         showEmailButton: showEmailButton,
         message: message
-      }), _react.default.createElement(_NewMessageButton.default, {
+      }))), _react.default.createElement(_NewMessageButton.default, {
         showNewMessageButton: showNewMessageButton,
         getRandomMessage: getRandomMessage
-      }), _react.default.createElement(_SaveButton.default, {
+      }), _react.default.createElement(SaveWrapper, null, _react.default.createElement(EmailDiv, null, _react.default.createElement(StyledText, null, "Let others know you enjoyed your advice!"), _react.default.createElement(_SaveButton.default, {
         showSaveButton: showSaveButton,
         message: message
-      }), _react.default.createElement(_FavesButton.default, {
-        showFavesButton: showFavesButton,
-        updateFavorites: updateFavorites
-      }), _react.default.createElement(_Favorites.default, {
-        showFavorites: showFavorites,
-        favorites: favorites
-      })));
+      })))), _react.default.createElement(GlobalStyle, null));
     }
   }]);
 

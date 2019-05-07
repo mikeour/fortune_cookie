@@ -6,6 +6,12 @@ const StyledButton = styled.button`
   font-size: 32px;
   justify-content: center;
   text-align: center;
+  opacity: 0.6;
+  transition: 0.3s;
+
+  :hover {
+    opacity: 1;
+  }
 `;
 
 const FavesButton = props => {

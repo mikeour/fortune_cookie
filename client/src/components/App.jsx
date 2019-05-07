@@ -12,6 +12,19 @@ import Favorites from "./Favorites.jsx";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+  
+  html { 
+    background: url('https://upload.wikimedia.org/wikipedia/commons/d/d2/Fortune_cookies.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  * {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -24,12 +37,45 @@ const StyledDiv = styled.div`
   width: 100%;
 `;
 
+const StyledMessageDiv = styled.div`
+  display: block;
+  height: 350px;
+  width: 100%;
+  margin: auto;
+  position: relative;
+`;
+
+const StyledText = styled.p`
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  padding: 15px;
+`;
+
+const EmailWrapper = styled.div`
+  justify-content: center;
+  display: inline-block;
+  width: 50%;
+`;
+
+const EmailDiv = styled.div`
+  width: 50%;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid black;
+  border-radius: 15px;
+`;
+
+const SaveWrapper = styled.div`
+  width: 50%;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorites: [],
       message: null,
+      favorites: [],
       showCookie: true,
       showMessage: false,
       showEmailButton: false,
@@ -40,9 +86,10 @@ class App extends React.Component {
       showFavorites: false
     };
 
-    this.updateCookie = this.updateCookie.bind(this);
     this.getRandomMessage = this.getRandomMessage.bind(this);
+    this.getFavoriteMessages = this.getFavoriteMessages.bind(this);
     this.updateFavorites = this.updateFavorites.bind(this);
+    this.updateCookie = this.updateCookie.bind(this);
   }
 
   componentDidMount() {
@@ -59,7 +106,7 @@ class App extends React.Component {
   }
 
   getFavoriteMessages() {
-    axios.get("/faves").then(({ data: faves }) => {
+    axios.get("/api/faves").then(({ data: faves }) => {
       this.setState({
         favorites: faves
       });
@@ -114,22 +161,39 @@ class App extends React.Component {
 
     return (
       <Wrapper>
-        <GlobalStyle />
         <Cookie showCookie={showCookie} updateCookie={updateCookie} />
-        <Message showMessage={showMessage} message={message} />
+        <StyledMessageDiv>
+          <Message showMessage={showMessage} message={message} />
+        </StyledMessageDiv>
         <StyledDiv>
-          <EmailButton showEmailButton={showEmailButton} message={message} />
+          <EmailWrapper>
+            <EmailDiv>
+              <StyledText>
+                Don't want to forget your advice? We'll email it to you!
+              </StyledText>
+              <EmailButton
+                showEmailButton={showEmailButton}
+                message={message}
+              />
+            </EmailDiv>
+          </EmailWrapper>
           <NewMessageButton
             showNewMessageButton={showNewMessageButton}
             getRandomMessage={getRandomMessage}
           />
-          <SaveButton showSaveButton={showSaveButton} message={message} />
-          <FavesButton
-            showFavesButton={showFavesButton}
-            updateFavorites={updateFavorites}
-          />
-          <Favorites showFavorites={showFavorites} favorites={favorites} />
+          <SaveWrapper>
+            <EmailDiv>
+              <StyledText>Let others know you enjoyed your advice!</StyledText>
+              <SaveButton showSaveButton={showSaveButton} message={message} />
+              {/* <FavesButton
+              showFavesButton={showFavesButton}
+              updateFavorites={updateFavorites}
+            /> */}
+            </EmailDiv>
+          </SaveWrapper>
+          {/* <Favorites showFavorites={showFavorites} favorites={favorites} /> */}
         </StyledDiv>
+        <GlobalStyle />
       </Wrapper>
     );
   }

@@ -3,17 +3,26 @@ import axios from "axios";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  display: ${props => (props.showSaveButton ? "relative" : "none")};
-  font-size: 32px;
+  display: ${props => (props.showSaveButton ? "block" : "none")};
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
   justify-content: center;
   text-align: center;
+  opacity: 0.6;
+  transition: 0.3s;
+  border-radius: 6px;
+  padding: 5px;
+
+  :hover {
+    opacity: 1;
+  }
 `;
 
 const StyledInput = styled.input`
-  display: ${props => (props.showSaveButton ? "relative" : "none")};
-  margin-left: auto;
-  margin-right: auto;
-  width: 300px;
+  display: ${props => (props.showSaveButton ? "block" : "none")};
+  margin: 0 auto 10px auto;
+  width: 90%;
 `;
 
 const SaveButton = props => {
@@ -31,6 +40,7 @@ const SaveButton = props => {
 
   return (
     <Fragment>
+      <StyledInput showSaveButton={showSaveButton} onChange={handleChange} />
       <StyledButton
         showSaveButton={showSaveButton}
         onClick={() => {
@@ -39,7 +49,6 @@ const SaveButton = props => {
       >
         Save!
       </StyledButton>
-      <StyledInput showSaveButton={showSaveButton} onChange={handleChange} />
     </Fragment>
   );
 };
