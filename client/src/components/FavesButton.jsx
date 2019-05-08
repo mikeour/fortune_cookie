@@ -24,7 +24,7 @@ const FavesButton = props => {
 
   return (
     <StyledButton showFavesButton={showFavesButton} onClick={updateFavorites}>
-      {!showFavorites ? "Show" : "Hide"} Faves!
+      {!showFavorites ? "See" : "Hide"} Everyones Faves!
     </StyledButton>
   );
 };

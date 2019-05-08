@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
+import FavesButton from "./FavesButton.jsx";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -26,8 +27,18 @@ const StyledInput = styled.input`
   width: 90%;
 `;
 
+const FlexDiv = styled.div`
+  display: flex;
+`;
+
 const SaveButton = props => {
-  const { showSaveButton, message } = props;
+  const {
+    showSaveButton,
+    showFavorites,
+    showFavesButton,
+    updateFavorites,
+    message
+  } = props;
   const [name, setName] = useState(null);
 
   const saveToDatabase = msg => {
@@ -46,14 +57,21 @@ const SaveButton = props => {
         showSaveButton={showSaveButton}
         onChange={handleChange}
       />
-      <StyledButton
-        showSaveButton={showSaveButton}
-        onClick={() => {
-          saveToDatabase(message);
-        }}
-      >
-        Save!
-      </StyledButton>
+      <FlexDiv>
+        <StyledButton
+          showSaveButton={showSaveButton}
+          onClick={() => {
+            saveToDatabase(message);
+          }}
+        >
+          Save!
+        </StyledButton>
+        <FavesButton
+          showFavorites={showFavorites}
+          showFavesButton={showFavesButton}
+          updateFavorites={updateFavorites}
+        />
+      </FlexDiv>
     </Fragment>
   );
 };

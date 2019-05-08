@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Wrapper = styled.div`
+  height: 100vh;
   width: 100%;
 `;
 
@@ -187,8 +188,9 @@ class App extends React.Component {
           <SaveWrapper>
             <EmailDiv showEmailButton={showEmailButton}>
               <StyledText>Let others know you enjoyed your advice!</StyledText>
-              <SaveButton showSaveButton={showSaveButton} message={message} />
-              <FavesButton
+              <SaveButton
+                showSaveButton={showSaveButton}
+                message={message}
                 showFavorites={showFavorites}
                 showFavesButton={showFavesButton}
                 updateFavorites={updateFavorites}
