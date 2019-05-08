@@ -13,6 +13,10 @@ const StyledButton = styled.button`
   border-radius: 6px;
   font-family: "Roboto", sans-serif;
   padding: 15px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const NewMessageButton = props => {

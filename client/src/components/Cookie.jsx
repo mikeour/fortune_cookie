@@ -23,6 +23,10 @@ const Image = styled.img`
   display: ${props => (props.displayProp ? "relative" : "none")};
   margin: auto;
   width: 50%;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const Cookie = props => {

@@ -18,6 +18,7 @@ const StyledButton = styled.button`
 
   :hover {
     opacity: 1;
+    cursor: pointer;
   }
 `;
 
