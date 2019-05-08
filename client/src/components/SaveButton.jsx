@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  display: ${props => (props.showSaveButton ? "block" : "none")};
+  display: ${props => (props.showSaveButton ? "inline-block" : "none")};
   margin-left: auto;
   margin-right: auto;
   font-size: 18px;
@@ -13,6 +13,7 @@ const StyledButton = styled.button`
   transition: 0.3s;
   border-radius: 6px;
   padding: 5px;
+  font-family: "Roboto", sans-serif;
 
   :hover {
     opacity: 1;
@@ -40,7 +41,11 @@ const SaveButton = props => {
 
   return (
     <Fragment>
-      <StyledInput showSaveButton={showSaveButton} onChange={handleChange} />
+      <StyledInput
+        placeholder="Enter your name..."
+        showSaveButton={showSaveButton}
+        onChange={handleChange}
+      />
       <StyledButton
         showSaveButton={showSaveButton}
         onClick={() => {

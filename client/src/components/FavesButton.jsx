@@ -3,11 +3,16 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
   display: ${props => (props.showFavesButton ? "relative" : "none")};
-  font-size: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
   justify-content: center;
   text-align: center;
   opacity: 0.6;
   transition: 0.3s;
+  border-radius: 6px;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
 
   :hover {
     opacity: 1;
@@ -15,11 +20,11 @@ const StyledButton = styled.button`
 `;
 
 const FavesButton = props => {
-  const { showFavesButton, updateFavorites } = props;
+  const { showFavesButton, updateFavorites, showFavorites } = props;
 
   return (
     <StyledButton showFavesButton={showFavesButton} onClick={updateFavorites}>
-      Show Faves!
+      {!showFavorites ? "Show" : "Hide"} Faves!
     </StyledButton>
   );
 };

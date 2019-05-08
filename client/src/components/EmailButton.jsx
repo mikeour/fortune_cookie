@@ -40,7 +40,11 @@ const EmailButton = props => {
 
   return (
     <Fragment>
-      <StyledInput showEmailButton={showEmailButton} onChange={handleChange} />
+      <StyledInput
+        placeholder="Enter Email Address here..."
+        showEmailButton={showEmailButton}
+        onChange={handleChange}
+      />
       <StyledButton
         onClick={() => {
           sendMail(message);

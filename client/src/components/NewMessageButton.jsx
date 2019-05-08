@@ -3,15 +3,16 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
   display: ${props => (props.showNewMessageButton ? "relative" : "none")};
-  font-size: 32px;
+  font-size: 20px;
+  width: 40%;
+  height: 80%;
+  background-color: white;
   justify-content: center;
   text-align: center;
-  opacity: 0.6;
-  transition: 0.3s;
-
-  :hover {
-    opacity: 1;
-  }
+  border: 1px solid black;
+  border-radius: 6px;
+  font-family: "Roboto", sans-serif;
+  padding: 15px;
 `;
 
 const NewMessageButton = props => {

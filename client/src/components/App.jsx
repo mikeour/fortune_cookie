@@ -28,12 +28,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
   width: 100%;
 `;
 
 const StyledDiv = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 `;
 
@@ -46,7 +47,7 @@ const StyledMessageDiv = styled.div`
 `;
 
 const StyledText = styled.p`
-  display: block;
+  display: inline-block;
   text-align: center;
   font-size: 20px;
   padding: 15px;
@@ -59,6 +60,7 @@ const EmailWrapper = styled.div`
 `;
 
 const EmailDiv = styled.div`
+  display: ${props => (props.showEmailButton ? "block" : "none")};
   width: 65%;
   padding: 15px;
   margin: 0 auto;
@@ -168,7 +170,7 @@ class App extends React.Component {
         </StyledMessageDiv>
         <StyledDiv>
           <EmailWrapper>
-            <EmailDiv>
+            <EmailDiv showEmailButton={showEmailButton}>
               <StyledText>
                 Don't want to forget your advice? We'll email it to you!
               </StyledText>
@@ -183,17 +185,18 @@ class App extends React.Component {
             getRandomMessage={getRandomMessage}
           />
           <SaveWrapper>
-            <EmailDiv>
+            <EmailDiv showEmailButton={showEmailButton}>
               <StyledText>Let others know you enjoyed your advice!</StyledText>
               <SaveButton showSaveButton={showSaveButton} message={message} />
-              {/* <FavesButton
-              showFavesButton={showFavesButton}
-              updateFavorites={updateFavorites}
-            /> */}
+              <FavesButton
+                showFavorites={showFavorites}
+                showFavesButton={showFavesButton}
+                updateFavorites={updateFavorites}
+              />
             </EmailDiv>
           </SaveWrapper>
-          {/* <Favorites showFavorites={showFavorites} favorites={favorites} /> */}
         </StyledDiv>
+        <Favorites showFavorites={showFavorites} favorites={favorites} />
         <GlobalStyle />
       </Wrapper>
     );
