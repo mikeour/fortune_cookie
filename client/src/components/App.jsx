@@ -101,8 +101,8 @@ class App extends React.Component {
   }
 
   getRandomMessage() {
-    axios.get("/api/random").then(({ data: messages }) => {
-      this.setState({ messages });
+    axios.get("/api/random").then(({ data: message }) => {
+      this.setState({ message });
     });
   }
 

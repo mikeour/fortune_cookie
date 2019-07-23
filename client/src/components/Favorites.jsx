@@ -35,13 +35,9 @@ const StyledMsg = styled.p`
   font-size: 15px;
 `;
 
-const Name = ({ name }) => {
-  return <StyledName>{name}</StyledName>;
-};
+const Username = ({ name }) => <StyledName>{name}</StyledName>;
 
-const Msg = ({ msg }) => {
-  return <StyledMsg>{msg}</StyledMsg>;
-};
+const UserMessage = ({ msg }) => <StyledMsg>{msg}</StyledMsg>;
 
 const Favorites = ({ favorites, showFavorites }) => (
   <StyledDiv showFavorites={showFavorites}>
@@ -51,8 +47,8 @@ const Favorites = ({ favorites, showFavorites }) => (
           const { name, msg } = favorite;
           return (
             <StyledLi key={i}>
-              <Name name={name} /> really enjoyed this advice:
-              <Msg msg={msg} />.
+              <Username name={name} /> really enjoyed this advice:
+              <UserMessage msg={msg} />.
             </StyledLi>
           );
         })}
