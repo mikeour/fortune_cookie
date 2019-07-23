@@ -17,6 +17,10 @@ const StyledButton = styled.button`
   :hover {
     cursor: pointer;
   }
+
+  :active {
+    transform: translateY(4px);
+  }
 `;
 
 const NewMessageButton = props => {
