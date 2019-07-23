@@ -7,7 +7,6 @@ import Message from "./Message.jsx";
 import EmailButton from "./EmailButton.jsx";
 import NewMessageButton from "./NewMessageButton.jsx";
 import SaveButton from "./SaveButton.jsx";
-import FavesButton from "./FavesButton.jsx";
 import Favorites from "./Favorites.jsx";
 
 const GlobalStyle = createGlobalStyle`
@@ -103,17 +102,13 @@ class App extends React.Component {
 
   getRandomMessage() {
     axios.get("/api/random").then(({ data: messages }) => {
-      this.setState({
-        message: messages
-      });
+      this.setState({ messages });
     });
   }
 
   getFavoriteMessages() {
-    axios.get("/api/faves").then(({ data: faves }) => {
-      this.setState({
-        favorites: faves
-      });
+    axios.get("/api/faves").then(({ data: favorites }) => {
+      this.setState({ favorites });
     });
   }
 
