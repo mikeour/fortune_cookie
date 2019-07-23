@@ -29,17 +29,14 @@ const Image = styled.img`
   }
 `;
 
-const Cookie = props => {
-  const { updateCookie, showCookie } = props;
-  return (
-    <Rotate displayProp={showCookie}>
-      <Image
-        onClick={updateCookie}
-        displayProp={showCookie}
-        src={window.location.origin + "/assets/cookie2.png"}
-      />
-    </Rotate>
-  );
-};
+const Cookie = ({ updateCookie, showCookie }) => (
+  <Rotate displayProp={showCookie}>
+    <Image
+      onClick={updateCookie}
+      displayProp={showCookie}
+      src={window.location.origin + "/assets/cookie2.png"}
+    />
+  </Rotate>
+);
 
 export default Cookie;

@@ -32,14 +32,13 @@ const FlexDiv = styled.div`
   display: flex;
 `;
 
-const SaveButton = props => {
-  const {
-    showSaveButton,
-    showFavorites,
-    showFavesButton,
-    updateFavorites,
-    message
-  } = props;
+const SaveButton = ({
+  showSaveButton,
+  showFavorites,
+  showFavesButton,
+  updateFavorites,
+  message
+}) => {
   const [name, setName] = useState(null);
 
   const saveToDatabase = msg => {

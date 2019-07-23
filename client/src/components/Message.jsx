@@ -20,14 +20,11 @@ const StyledImage = styled.img`
   display: ${props => (props.showMessage ? "relative" : "none")};
 `;
 
-const Message = props => {
-  const { showMessage, message } = props;
-  return (
-    <Fragment>
-      <StyledImage src={window.location.origin + "/assets/open_cookie.png"} />
-      <StyledP showMessage={showMessage}>{message}</StyledP>
-    </Fragment>
-  );
-};
+const Message = ({ showMessage, message }) => (
+  <Fragment>
+    <StyledImage src={window.location.origin + "/assets/open_cookie.png"} />
+    <StyledP showMessage={showMessage}>{message}</StyledP>
+  </Fragment>
+);
 
 export default Message;

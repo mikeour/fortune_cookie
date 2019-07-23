@@ -26,8 +26,7 @@ const StyledInput = styled.input`
   width: 90%;
 `;
 
-const EmailButton = props => {
-  const { message, showEmailButton } = props;
+const EmailButton = ({ message, showEmailButton }) => {
   const [email, setEmail] = useState(null);
 
   const sendMail = msg => {

@@ -20,14 +20,10 @@ const StyledButton = styled.button`
   }
 `;
 
-const FavesButton = props => {
-  const { showFavesButton, updateFavorites, showFavorites } = props;
-
-  return (
-    <StyledButton showFavesButton={showFavesButton} onClick={updateFavorites}>
-      {!showFavorites ? "See" : "Hide"} Everyones Faves!
-    </StyledButton>
-  );
-};
+const FavesButton = ({ showFavesButton, updateFavorites, showFavorites }) => (
+  <StyledButton showFavesButton={showFavesButton} onClick={updateFavorites}>
+    {!showFavorites ? "See" : "Hide"} Everyones Faves!
+  </StyledButton>
+);
 
 export default FavesButton;

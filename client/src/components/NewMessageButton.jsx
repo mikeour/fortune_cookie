@@ -23,16 +23,13 @@ const StyledButton = styled.button`
   }
 `;
 
-const NewMessageButton = props => {
-  const { getRandomMessage, showNewMessageButton } = props;
-  return (
-    <StyledButton
-      onClick={getRandomMessage}
-      showNewMessageButton={showNewMessageButton}
-    >
-      New Message!
-    </StyledButton>
-  );
-};
+const NewMessageButton = ({ getRandomMessage, showNewMessageButton }) => (
+  <StyledButton
+    onClick={getRandomMessage}
+    showNewMessageButton={showNewMessageButton}
+  >
+    New Message!
+  </StyledButton>
+);
 
 export default NewMessageButton;

@@ -35,32 +35,29 @@ const StyledMsg = styled.p`
   font-size: 15px;
 `;
 
-const Name = props => {
-  return <StyledName>{props.name}</StyledName>;
+const Name = ({ name }) => {
+  return <StyledName>{name}</StyledName>;
 };
 
-const Msg = props => {
-  return <StyledMsg>{props.msg}</StyledMsg>;
+const Msg = ({ msg }) => {
+  return <StyledMsg>{msg}</StyledMsg>;
 };
 
-const Favorites = props => {
-  const { favorites, showFavorites } = props;
-  return (
-    <StyledDiv showFavorites={showFavorites}>
-      <StyledUl>
-        {showFavorites &&
-          favorites.map((favorite, i) => {
-            const { name, msg } = favorite;
-            return (
-              <StyledLi key={i}>
-                <Name name={name} /> really enjoyed this advice:
-                <Msg msg={msg} />.
-              </StyledLi>
-            );
-          })}
-      </StyledUl>
-    </StyledDiv>
-  );
-};
+const Favorites = ({ favorites, showFavorites }) => (
+  <StyledDiv showFavorites={showFavorites}>
+    <StyledUl>
+      {showFavorites &&
+        favorites.map((favorite, i) => {
+          const { name, msg } = favorite;
+          return (
+            <StyledLi key={i}>
+              <Name name={name} /> really enjoyed this advice:
+              <Msg msg={msg} />.
+            </StyledLi>
+          );
+        })}
+    </StyledUl>
+  </StyledDiv>
+);
 
 export default Favorites;
